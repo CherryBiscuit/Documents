@@ -1,25 +1,27 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Dimension2D;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
+
 import javax.swing.JLabel;
+import javax.swing.JTextPane;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.Toolkit;
 
 public class Chore extends JFrame {
 
@@ -49,7 +51,6 @@ public class Chore extends JFrame {
 	 * Create the frame.
 	 */
 	public Chore() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Chore.class.getResource("/images/Mayuri.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 300);
 		contentPane = new JPanel();
@@ -72,7 +73,6 @@ public class Chore extends JFrame {
 		lblChar.setIcon(iconChar);
 		contentPane.add(lblChar);
 		
-		
 		/*
 		JTextPane textPane = new JTextPane();
 		textPane.setFont(new Font("Lucida Bright", Font.BOLD, 24));
@@ -84,7 +84,7 @@ public class Chore extends JFrame {
 		textArea.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
-				//System.out.println(textArea.getRows());
+				System.out.println(textArea.getRows());
 			}
 		});
 		textArea.setFont(new Font("Lucida Bright", Font.BOLD, 24));
@@ -109,79 +109,7 @@ public class Chore extends JFrame {
 		iconBkg = new ImageIcon( newimgBkg );
 		lblBkg.setIcon(iconBkg);
 		contentPane.add(lblBkg);
-		
-		
-		JLabel lblClose = new JLabel("Close");
-		lblClose.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dispose();
-			}
-		});
-		lblClose.setBounds(454, 11, 32, 14);
-		contentPane.add(lblClose);
-		
-		JLabel lblCloseBkg = new JLabel("");
-		lblCloseBkg.setBounds(450, 11, 40, 14);
-		ImageIcon iconCloseBkg = new ImageIcon(getClass().getResource("/images/background.jpg"));
-		Image imgCloseBkg = iconCloseBkg.getImage() ;  
-		Image newimgCloseBkg = imgCloseBkg.getScaledInstance( lblCloseBkg.getWidth(), lblCloseBkg.getHeight(),  Image.SCALE_SMOOTH ) ;  
-		iconCloseBkg = new ImageIcon( newimgCloseBkg );
-		lblCloseBkg.setIcon(iconCloseBkg);
-		contentPane.add(lblCloseBkg);
-		
-		JLabel lblNewChore = new JLabel("New Chore");
-		lblNewChore.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				Chore chore = new Chore();
-				chore.setVisible(true);
-			}
-		});
-		lblNewChore.setBounds(379, 11, 63, 14);
-		contentPane.add(lblNewChore);
-		
-		JLabel lblNewChoreBkg = new JLabel("New label");
-		lblNewChoreBkg.setBounds(371, 11, 65, 14);
-		ImageIcon iconNewChoreBkg = new ImageIcon(getClass().getResource("/images/background.jpg"));
-		Image imgNewChoreBkg = iconNewChoreBkg.getImage() ;  
-		Image newimgNewChoreBkg = imgNewChoreBkg.getScaledInstance( lblNewChoreBkg.getWidth(), lblNewChoreBkg.getHeight(),  Image.SCALE_SMOOTH ) ;  
-		iconNewChoreBkg = new ImageIcon( newimgNewChoreBkg );
-		lblNewChoreBkg.setIcon(iconNewChoreBkg);
-		contentPane.add(lblNewChoreBkg);
-		
-		JLabel lblTimer = new JLabel("  Timer");
-		lblTimer.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-                ActionListener actionListener = new ActionListener() {
-
-                    public void actionPerformed(ActionEvent actionEvent) {
-                        System.out.println("Hello");
-                    }
-                };
-                Timer timer = new Timer(5000, actionListener);
-                timer.setRepeats(false);
-                timer.start();
-			}
-		});
-		lblTimer.setBounds(310, 11, 39, 14);
-		contentPane.add(lblTimer);
-		
-		JLabel lblBkgTimer = new JLabel("New label");
-		lblBkgTimer.setBounds(310, 11, 42, 14);
-		
-		ImageIcon iconTimerBkg = new ImageIcon(getClass().getResource("/images/background.jpg"));
-		Image imgTimerBkg = iconCloseBkg.getImage() ;  
-		Image newimgTimerBkg = imgTimerBkg.getScaledInstance( lblBkgTimer.getWidth(), lblBkgTimer.getHeight(),  Image.SCALE_SMOOTH ) ;  
-		iconTimerBkg = new ImageIcon( newimgTimerBkg );
-		lblBkgTimer.setIcon(iconTimerBkg);
-		
-		contentPane.add(lblBkgTimer);
-		
-		
-		
-		
+		contentPane.add(lblBkg);
 	}
 	public static class FrameDragListener extends MouseAdapter {
 
@@ -205,4 +133,5 @@ public class Chore extends JFrame {
             frame.setLocation(currCoords.x - mouseDownCompCoords.x, currCoords.y - mouseDownCompCoords.y);
         }
     }
+	
 }
